@@ -9,17 +9,26 @@ public class Book implements Serializable {
 	private String title;
 	private String description;
 	private String author;
+	private String img;
 	private double price;
 	private boolean available;
 	
 	public Book() {}
-	public Book(String title, String description, String author, double price, boolean available) {
-		super();
-		this.title = title;
-		this.description = description;
-		this.author = author;
-		this.price = price;
-		this.available = available;
+	public Book(
+		long id,
+		String title,
+		String description,
+		String author,
+		String img,
+		double price,
+		boolean available) {
+			this.id = id;
+			this.title = title;
+			this.description = description;
+			this.author = author;
+			this.setImg(img);
+			this.price = price;
+			this.available = available;
 	}
 	
 	public long getId() {
@@ -45,6 +54,12 @@ public class Book implements Serializable {
 	}
 	public void setAuthor(String author) {
 		this.author = author;
+	}
+	public String getImg() {
+		return img;
+	}
+	public void setImg(String img) {
+		this.img = "/resources/assets/img/" + img;
 	}
 	public double getPrice() {
 		return price;

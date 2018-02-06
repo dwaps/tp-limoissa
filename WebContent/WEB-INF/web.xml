@@ -10,6 +10,14 @@
     <jsp-file>/WEB-INF/pages/books.jsp</jsp-file>
   </servlet>
   <servlet>
+    <servlet-name>BookJSP</servlet-name>
+    <jsp-file>/WEB-INF/pages/book.jsp</jsp-file>
+  </servlet>
+  <servlet>
+    <servlet-name>BookFormJSP</servlet-name>
+    <jsp-file>/WEB-INF/pages/book-form.jsp</jsp-file>
+  </servlet>
+  <servlet>
     <servlet-name>ContactJSP</servlet-name>
     <jsp-file>/WEB-INF/pages/contact.jsp</jsp-file>
   </servlet>

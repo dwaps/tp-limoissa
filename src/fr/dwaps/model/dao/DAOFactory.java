@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+import fr.dwaps.model.beans.Book;
+
 public final class DAOFactory {
 	private DAOFactory() {}
 	
@@ -34,5 +36,8 @@ public final class DAOFactory {
 		catch (Exception e) { e.printStackTrace(); }
 	}
 	
+	public static InterfaceDAO<Book> getBookDAO() {
+		return new BookDAO();
+	}
 	
 }

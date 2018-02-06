@@ -1,24 +1,27 @@
 package fr.dwaps.business;
 
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 
-import fr.dwaps.model.beans.Book;
 import fr.dwaps.model.dao.DAOFactory;
 import fr.dwaps.web.util.AbstractAction;
 import fr.dwaps.web.util.Constants;
 
-public class BooksAction extends AbstractAction {
+public class DeleteBookAction extends AbstractAction {
 	private static final String JSP_PAGE = Constants.JSP_BOOKS_NAME;
-	private static final String TITLE = Constants.TITLE_BOOKS_PAGE;
 	
 	@Override
 	public String executeAction(HttpServletRequest request) {
-		request.setAttribute("title", TITLE);
+		request.setAttribute("reload", true);
 		
-		List<Book> books = DAOFactory.getBookDAO().findAll();
-		request.setAttribute("books", books);
+		String idStr = request.getParameter("id");
+		
+		if (idStr != null) {
+			try {
+				long id = Long.parseLong(idStr);
+				DAOFactory.getBookDAO().delete(id);
+			}
+			catch (Exception e) { e.printStackTrace(); }
+		}
 		
 		return JSP_PAGE;
 	}

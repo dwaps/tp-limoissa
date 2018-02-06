@@ -1,3 +1,8 @@
+
+<c:if test="${reload}">
+	<c:redirect url="/books" />
+</c:if>
+
 <c:choose>
 	<c:when test="${ !empty books }">
 		<table class="table table-hover table-striped">
@@ -13,7 +18,9 @@
 				<td>${book.author}</td>
 				<td>${book.price}</td>
 				<td>
-					<a href="${bookDetailUrl}">Détail</a>
+					<a href="${bookDetailUrl}?id=${book.id}">Détail</a>
+					<a href="${bookEditUrl}?id=${book.id}">Editer</a>
+					<a href="${bookDeleteUrl}?id=${book.id}">Supprimer</a>
 				</td>
 			</tr>
 			</c:forEach>
