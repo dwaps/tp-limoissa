@@ -1,0 +1,24 @@
+table {
+  position: relative;
+}
+
+.main-row {
+  cursor: pointer;
+  height: 50px;
+}
+
+tr.toggle-row.active {
+  opacity: 1;
+  position: relative;
+}
+
+tr.toggle-row {
+  transition: all 500ms;
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+}
+
+tr.toggle-row td {
+	width: 50%;
+}

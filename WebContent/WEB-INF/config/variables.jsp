@@ -1,0 +1,1 @@
+<c:set value='<%= request.getRequestURI().contains("admin") %>' var="backend" />

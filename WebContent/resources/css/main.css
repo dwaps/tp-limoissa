@@ -1,5 +1,10 @@
+/* General */
+@import "common.css";
+
+/* Includes */
+@import "includes/detail-book.css";
+@import "includes/list-books.css";
 @import "includes/footPage.css";
 
-body {
-  background: #f5f3ec;
-}
+/* Pages */
+@import "pages/books.css";

@@ -1,9 +1,11 @@
 package fr.dwaps.web.servlets;
 
-import static fr.dwaps.web.util.Constants.BOOKS_TAB_URL;
-import static fr.dwaps.web.util.Constants.CONTACT_TAB_URL;
-import static fr.dwaps.web.util.Constants.FRONT_SERVLET_NAME;
-import static fr.dwaps.web.util.Constants.HOME_TAB_URL;
+import static fr.dwaps.web.util.Constants.ADMIN_BOOKS_CREATE_URL;
+import static fr.dwaps.web.util.Constants.ADMIN_BOOKS_DELETE_URL;
+import static fr.dwaps.web.util.Constants.ADMIN_BOOKS_EDIT_URL;
+import static fr.dwaps.web.util.Constants.ADMIN_BOOKS_GET_URL;
+import static fr.dwaps.web.util.Constants.ADMIN_BOOKS_LIST_URL;
+import static fr.dwaps.web.util.Constants.BACK_SERVLET_NAME;
 
 import java.io.IOException;
 
@@ -16,19 +18,22 @@ import javax.servlet.http.HttpServletResponse;
 import fr.dwaps.web.util.ActionManager;
 
 @WebServlet(
-	name=FRONT_SERVLET_NAME,
+	name=BACK_SERVLET_NAME,
 	urlPatterns={
-		HOME_TAB_URL,
-		BOOKS_TAB_URL,
-		CONTACT_TAB_URL })
-public class FrontServlet extends HttpServlet {
+		ADMIN_BOOKS_LIST_URL,
+		ADMIN_BOOKS_CREATE_URL,
+		ADMIN_BOOKS_GET_URL,
+		ADMIN_BOOKS_EDIT_URL,
+		ADMIN_BOOKS_DELETE_URL})
+public class BackServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	private String getActionName(HttpServletRequest request) {
 		String uri = request.getRequestURI();
 		return uri.substring(uri.lastIndexOf("/")+1);
 	}
-
+	
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String actionName = getActionName(request);
 		String jspName = ActionManager.getAction(actionName).executeAction(request);
@@ -36,8 +41,16 @@ public class FrontServlet extends HttpServlet {
 		getServletContext()
 			.getNamedDispatcher(jspName)
 			.forward(request, response);
+		
+		request.getSession().removeAttribute("info");
+	}
+	
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String actionName = getActionName(request);
+		ActionManager.getAction(actionName).executeAction(request);
+		String url = request.getContextPath() + (String) request.getAttribute("redirectUrl");
+		response.sendRedirect(url);
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	}
 }

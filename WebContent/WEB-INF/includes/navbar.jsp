@@ -10,11 +10,29 @@
     <ul class="navbar-nav mr-auto">
     	<c:forEach items="${tabs}" var="tab">
       <li class="nav-item">
-        <a class="nav-link ${tab.active ? 'active' : ''}" href="${tab.url}">
-        		${tab.label}
-      	</a>
+      	<c:choose>
+    		<c:when test='${backend && tab.adminTab}'>
+	        <a class="nav-link ${tab.active ? 'active' : ''}" href="${tab.url}">
+	        		${tab.label}
+	      	</a>
+    		</c:when>
+    		<c:when test='${!backend && !tab.adminTab}'>
+	        <a class="nav-link ${tab.active ? 'active' : ''}" href="${tab.url}">
+	        		${tab.label}
+	      	</a>
+    		</c:when>
+      	</c:choose>
       </li>
     	</c:forEach>
     </ul>
   </div>
+  
+  <c:if test="${ !empty info }">
+	<div class="alert alert-info alert-dismissible fade show" role="alert">
+	  ${info}
+	  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+	    <span aria-hidden="true">&times;</span>
+	  </button>
+	</div>
+  </c:if>
 </nav>

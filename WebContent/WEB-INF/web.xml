@@ -26,6 +26,7 @@
       <url-pattern>*.jsp</url-pattern>
       <include-prelude>/WEB-INF/config/jspConfig.jsp</include-prelude>
       <include-prelude>/WEB-INF/config/resources.jsp</include-prelude>
+      <include-prelude>/WEB-INF/config/variables.jsp</include-prelude>
       <include-prelude>/WEB-INF/config/urls.jsp</include-prelude>
       <include-prelude>/WEB-INF/includes/headPage.jsp</include-prelude>
       <include-coda>/WEB-INF/includes/footPage.jsp</include-coda>

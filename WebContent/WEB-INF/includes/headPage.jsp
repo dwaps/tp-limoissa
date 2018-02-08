@@ -2,6 +2,8 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
+		<link href="${GoogleMaterialIcons}"
+      rel="stylesheet">
 		<link rel="stylesheet" href="${BootstrapCSS}" />
 		<link rel="stylesheet" href="${customStyleCSS}" />
 		<title>${title}</title>
@@ -9,6 +11,6 @@
 	
 	<body>
 	
-		<div class="container">
+		<div class="container-fluid">
 		
 		<%@ include file="navbar.jsp" %>

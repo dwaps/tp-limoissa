@@ -15,20 +15,29 @@ public class Book implements Serializable {
 	
 	public Book() {}
 	public Book(
-		long id,
 		String title,
 		String description,
 		String author,
 		String img,
 		double price,
 		boolean available) {
-			this.id = id;
 			this.title = title;
 			this.description = description;
 			this.author = author;
 			this.setImg(img);
 			this.price = price;
 			this.available = available;
+	}
+	public Book(
+			long id,
+			String title,
+			String description,
+			String author,
+			String img,
+			double price,
+			boolean available) {
+		this(title, description, author, img, price, available);
+		this.id = id;
 	}
 	
 	public long getId() {
@@ -59,7 +68,8 @@ public class Book implements Serializable {
 		return img;
 	}
 	public void setImg(String img) {
-		this.img = "/resources/assets/img/" + img;
+		if (img.isEmpty()) img = "no-img.png";
+		this.img = img.contains("resources") ? img : "/resources/assets/img/" + img;
 	}
 	public double getPrice() {
 		return price;

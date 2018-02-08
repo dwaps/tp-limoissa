@@ -16,7 +16,9 @@ import fr.dwaps.web.util.Constants;
 import fr.dwaps.web.util.NavigationTabs;
 
 @WebFilter(
-	servletNames=Constants.FRONT_SERVLET_NAME,
+	servletNames={
+		Constants.FRONT_SERVLET_NAME,
+		Constants.BACK_SERVLET_NAME },
 	dispatcherTypes=DispatcherType.REQUEST)
 public class InitNavigationTabsFilter implements Filter {
 	

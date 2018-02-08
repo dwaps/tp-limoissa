@@ -11,9 +11,8 @@ public class DeleteBookAction extends AbstractAction {
 	
 	@Override
 	public String executeAction(HttpServletRequest request) {
-		request.setAttribute("reload", true);
-		
 		String idStr = request.getParameter("id");
+		request.setAttribute("reload", true);
 		
 		if (idStr != null) {
 			try {
