@@ -21,13 +21,14 @@ public class EditBookAction extends AbstractAction {
 		
 		try {
 			try {
-				long id = Long.parseLong(idStr);
+				int id = Integer.parseInt(idStr);
 				book = DAOFactory.getBookDAO().find(id);
 			} catch (Exception e) { request.setAttribute("reload", true); }
 			
 			if (!postMethod) {
 				request.setAttribute("book", book);
 			} else {
+				System.out.println("EditBook postMethod...");
 				String title = request.getParameter(BOOK_TITLE);
 				String description = request.getParameter(BOOK_DESCRIPTION);
 				String author = request.getParameter(BOOK_AUTHOR);

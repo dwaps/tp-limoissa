@@ -2,14 +2,29 @@ package fr.dwaps.model.beans;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Book implements Serializable {
 	private final static long serialVersionUID = 1L;
 	
-	private long id;
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private int id;
+	
+	@Column(length=90, nullable=false)
 	private String title;
+	@Column(columnDefinition="TEXT")
 	private String description;
+	@Column(length=90, nullable=false)
 	private String author;
+	@Column(length=90, nullable=false)
 	private String img;
+	@Column(columnDefinition="DECIMAL(5,2)")
 	private double price;
 	private boolean available;
 	
@@ -29,7 +44,7 @@ public class Book implements Serializable {
 			this.available = available;
 	}
 	public Book(
-			long id,
+			int id,
 			String title,
 			String description,
 			String author,
@@ -40,10 +55,10 @@ public class Book implements Serializable {
 		this.id = id;
 	}
 	
-	public long getId() {
+	public int getId() {
 		return id;
 	}
-	public void setId(long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 	public String getTitle() {

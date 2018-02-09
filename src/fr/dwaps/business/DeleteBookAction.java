@@ -16,7 +16,7 @@ public class DeleteBookAction extends AbstractAction {
 		
 		if (idStr != null) {
 			try {
-				long id = Long.parseLong(idStr);
+				int id = Integer.parseInt(idStr);
 				DAOFactory.getBookDAO().delete(id);
 			}
 			catch (Exception e) { e.printStackTrace(); }

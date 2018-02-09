@@ -18,7 +18,7 @@ public class GetBookAction extends AbstractAction {
 		String idStr = request.getParameter("id");
 		if (idStr != null) {
 			try {
-				long id = Long.parseLong(idStr);
+				int id = Integer.parseInt(idStr);
 				Book book = DAOFactory.getBookDAO().find(id);
 				request.setAttribute("book", book);
 			}
