@@ -2,13 +2,13 @@
 
 <Context>
 	<Resource
-		name="jdbc/tp_library"
+		name="jdbc/tp_limoissa"
 		type="javax.sql.DataSource"
 		auth="Container"
 		
 		username="dwaps"
 		password="123456"
-		url="jdbc:mysql://localhost:3306/tp_library"
+		url="jdbc:mysql://localhost:3306/tp_limoissa"
 		driverClassName="com.mysql.jdbc.Driver"
 		
 		maxIdle="10"

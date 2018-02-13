@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:jsp="http://java.sun.com/xml/ns/javaee/jsp" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
   <display-name>tp-library</display-name>
+  <filter>
+  	<filter-name>EncodingFilter</filter-name>
+  	<filter-class>fr.dwaps.web.filters.EncodingFilter</filter-class>
+  </filter>
+  <filter-mapping>
+  	<filter-name>EncodingFilter</filter-name>
+  	<url-pattern>/*</url-pattern>
+  </filter-mapping>
   <servlet>
     <servlet-name>HomeJSP</servlet-name>
     <jsp-file>/WEB-INF/pages/home.jsp</jsp-file>
@@ -21,13 +29,25 @@
     <servlet-name>ContactJSP</servlet-name>
     <jsp-file>/WEB-INF/pages/contact.jsp</jsp-file>
   </servlet>
+  <servlet>
+    <servlet-name>SigninJSP</servlet-name>
+    <jsp-file>/WEB-INF/pages/signin.jsp</jsp-file>
+  </servlet>
+  <servlet>
+    <servlet-name>LoginJSP</servlet-name>
+    <jsp-file>/WEB-INF/pages/login.jsp</jsp-file>
+  </servlet>
+  <servlet>
+    <servlet-name>LogoutJSP</servlet-name>
+    <jsp-file>/WEB-INF/pages/logout.jsp</jsp-file>
+  </servlet>
   <jsp-config>
     <jsp-property-group>
       <url-pattern>*.jsp</url-pattern>
       <include-prelude>/WEB-INF/config/jspConfig.jsp</include-prelude>
       <include-prelude>/WEB-INF/config/resources.jsp</include-prelude>
-      <include-prelude>/WEB-INF/config/variables.jsp</include-prelude>
       <include-prelude>/WEB-INF/config/urls.jsp</include-prelude>
+      <include-prelude>/WEB-INF/config/variables.jsp</include-prelude>
       <include-prelude>/WEB-INF/includes/headPage.jsp</include-prelude>
       <include-coda>/WEB-INF/includes/footPage.jsp</include-coda>
     </jsp-property-group>

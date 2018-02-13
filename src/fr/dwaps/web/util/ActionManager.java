@@ -3,6 +3,8 @@ package fr.dwaps.web.util;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import fr.dwaps.business.BooksAction;
 import fr.dwaps.business.ContactAction;
 import fr.dwaps.business.CreateBookAction;
@@ -10,6 +12,9 @@ import fr.dwaps.business.DeleteBookAction;
 import fr.dwaps.business.EditBookAction;
 import fr.dwaps.business.GetBookAction;
 import fr.dwaps.business.HomeAction;
+import fr.dwaps.business.LoginAction;
+import fr.dwaps.business.LogoutAction;
+import fr.dwaps.business.SigninAction;
 
 public final class ActionManager {
 	private static Map<String, AbstractAction> actions = new HashMap<>();
@@ -26,6 +31,10 @@ public final class ActionManager {
 	private static final String ACTION_ADMIN_EDIT_BOOK = "edit";
 	private static final String ACTION_ADMIN_DELETE_BOOK = "delete";
 	
+	private static final String ACTION_SIGNIN = Constants.ACTION_SIGNIN;
+	private static final String ACTION_LOGIN = Constants.ACTION_LOGIN;
+	private static final String ACTION_LOGOUT = Constants.ACTION_LOGOUT;
+	
 	private ActionManager() {}
 	
 	static {
@@ -40,9 +49,19 @@ public final class ActionManager {
 		actions.put(ACTION_ADMIN_CREATE_BOOK, new CreateBookAction());
 		actions.put(ACTION_ADMIN_EDIT_BOOK, new EditBookAction());
 		actions.put(ACTION_ADMIN_DELETE_BOOK, new DeleteBookAction());
+		
+		actions.put(ACTION_SIGNIN, new SigninAction());
+		actions.put(ACTION_LOGIN, new LoginAction());
+		actions.put(ACTION_LOGOUT, new LogoutAction());
 	}
 	
-	public static AbstractAction getAction(String action) {
-		return actions.get(action);
+	public static AbstractAction getAction(HttpServletRequest request) {
+		String actionName = getActionName(request);
+		return actions.get(actionName);
+	}
+	
+	public static String getActionName(HttpServletRequest request) {
+		String uri = request.getRequestURI();
+		return uri.substring(uri.lastIndexOf("/")+1);
 	}
 }

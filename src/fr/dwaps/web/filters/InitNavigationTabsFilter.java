@@ -31,7 +31,7 @@ public class InitNavigationTabsFilter implements Filter {
 
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		String uri = ((HttpServletRequest) request).getRequestURI();
-		
+
 		for (NavigationTabs tab : NavigationTabs.values()) {
 			tab.setActive(false);
 			if (tab.getUrl().equals(uri)) {

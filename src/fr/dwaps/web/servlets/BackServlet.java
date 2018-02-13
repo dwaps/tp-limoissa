@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import fr.dwaps.model.beans.User;
 import fr.dwaps.web.util.ActionManager;
 
 @WebServlet(
@@ -28,27 +29,30 @@ import fr.dwaps.web.util.ActionManager;
 public class BackServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-	private String getActionName(HttpServletRequest request) {
-		String uri = request.getRequestURI();
-		return uri.substring(uri.lastIndexOf("/")+1);
-	}
-	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String actionName = getActionName(request);
-		String jspName = ActionManager.getAction(actionName).executeAction(request);
 		
-		getServletContext()
-			.getNamedDispatcher(jspName)
-			.forward(request, response);
+		User user = (User) request.getSession().getAttribute("user");
 		
-		request.getSession().removeAttribute("info");
+		if (user != null) {
+			String jspName = ActionManager
+				.getAction(request)
+				.executeAction(request);
+			
+			getServletContext()
+				.getNamedDispatcher(jspName)
+				.forward(request, response);
+			
+			request.getSession().removeAttribute("info");
+		}
+		else response.sendRedirect(request.getContextPath()+"/home");
 	}
 	
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String actionName = getActionName(request);
-		ActionManager.getAction(actionName).executeAction(request);
+		ActionManager
+			.getAction(request)
+			.executeAction(request);
 		String url = request.getContextPath() + (String) request.getAttribute("redirectUrl");
 		response.sendRedirect(url);
 	}

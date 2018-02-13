@@ -23,22 +23,15 @@ import fr.dwaps.web.util.ActionManager;
 		CONTACT_TAB_URL })
 public class FrontServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	
-	private String getActionName(HttpServletRequest request) {
-		String uri = request.getRequestURI();
-		return uri.substring(uri.lastIndexOf("/")+1);
-	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String actionName = getActionName(request);
-		String jspName = ActionManager.getAction(actionName).executeAction(request);
+		String jspName = ActionManager
+			.getAction(request)
+			.executeAction(request);
 		
 		getServletContext()
 			.getNamedDispatcher(jspName)
 			.forward(request, response);
-	}
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	}
 }
 

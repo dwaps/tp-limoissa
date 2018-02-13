@@ -25,6 +25,11 @@ public final class Constants {
 	public static final String ACTION_ADMIN_EDIT_BOOK = "edit";
 	public static final String ACTION_ADMIN_DELETE_BOOK = "delete";
 	
+	// Access action names
+	public static final String ACTION_SIGNIN = "signin";
+	public static final String ACTION_LOGIN = "login";
+	public static final String ACTION_LOGOUT = "logout";
+	
 	// Nav tabs urls
 	public static final String HOME_TAB_URL = "/"+HOME_TAB_ACTION;
 	public static final String BOOKS_TAB_URL = "/"+BOOKS_TAB_ACTION;
@@ -38,12 +43,20 @@ public final class Constants {
 	public static final String ADMIN_BOOKS_EDIT_URL = ADMIN_BOOKS_BASEURL+ACTION_ADMIN_EDIT_BOOK;
 	public static final String ADMIN_BOOKS_DELETE_URL = ADMIN_BOOKS_BASEURL+ACTION_ADMIN_DELETE_BOOK;
 	
+	// Access urls
+	public static final String SIGNIN_URL = "/"+ACTION_SIGNIN;
+	public static final String LOGIN_URL = "/"+ACTION_LOGIN;
+	public static final String LOGOUT_URL = "/"+ACTION_LOGOUT;
+	
 	// Jsp names
 	public static final String JSP_HOME_NAME = "HomeJSP";
 	public static final String JSP_BOOKS_NAME = "BooksJSP";
 	public static final String JSP_BOOK_NAME = "BookJSP";
 	public static final String JSP_BOOK_FORM_NAME = "BookFormJSP";
 	public static final String JSP_CONTACT_NAME = "ContactJSP";
+	public static final String JSP_SIGNIN_NAME = "SigninJSP";
+	public static final String JSP_LOGIN_NAME = "LoginJSP";
+	public static final String JSP_LOGOUT_NAME = "LogoutJSP";
 	
 	// Titles pages
 	public static final String TITLE_HOME_PAGE = "Page d'accueil";
@@ -52,6 +65,8 @@ public final class Constants {
 	public static final String TITLE_BOOK_ADD_PAGE = "Création d'un livre";
 	public static final String TITLE_BOOK_EDIT_PAGE = "Edition d'un livre";
 	public static final String TITLE_CONTACT_PAGE = "Contactez-nous !";
+	public static final String TITLE_SIGNIN_PAGE = "Inscription";
+	public static final String TITLE_LOGIN_PAGE = "Connexion";
 	
 	// Session : info messages
 	public static final String INFO_ATTR = "info";
