@@ -9,11 +9,13 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 
+import fr.dwaps.web.util.Constants;
+
 public class EncodingFilter implements Filter {
 
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-		request.setCharacterEncoding("UTF-8");
-		response.setCharacterEncoding("UTF-8");
+		request.setCharacterEncoding(Constants.APP_ENCODING);
+		response.setCharacterEncoding(Constants.APP_ENCODING);
 		chain.doFilter(request, response);
 	}
 

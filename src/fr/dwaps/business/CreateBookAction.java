@@ -1,11 +1,21 @@
 package fr.dwaps.business;
 
-import static fr.dwaps.web.util.Constants.*;
+import static fr.dwaps.web.util.Constants.ADMIN_BOOKS_CREATE_URL;
+import static fr.dwaps.web.util.Constants.ADMIN_BOOKS_LIST_URL;
+import static fr.dwaps.web.util.Constants.BOOK_AUTHOR;
+import static fr.dwaps.web.util.Constants.BOOK_AVAILABLE;
+import static fr.dwaps.web.util.Constants.BOOK_DESCRIPTION;
+import static fr.dwaps.web.util.Constants.BOOK_IMG;
+import static fr.dwaps.web.util.Constants.BOOK_PRICE;
+import static fr.dwaps.web.util.Constants.BOOK_TITLE;
+import static fr.dwaps.web.util.Constants.INFO_ATTR;
+import static fr.dwaps.web.util.Constants.INFO_BOOK_CREATED_FAIL;
+import static fr.dwaps.web.util.Constants.INFO_BOOK_CREATED_OK;
 
 import javax.servlet.http.HttpServletRequest;
 
 import fr.dwaps.model.beans.Book;
-import fr.dwaps.model.dao.DAOFactory;
+import fr.dwaps.service.BookService;
 import fr.dwaps.web.util.AbstractAction;
 import fr.dwaps.web.util.Constants;
 
@@ -30,7 +40,7 @@ public class CreateBookAction extends AbstractAction {
 				double price = Double.parseDouble(priceStr);
 				boolean available = Boolean.parseBoolean(availableStr);
 				Book book = new Book(title, description, author, img, price, available);
-				DAOFactory.getBookDAO().create(book);
+				BookService.create(book);
 				request.getSession().setAttribute(INFO_ATTR, INFO_BOOK_CREATED_OK);
 				request.setAttribute("redirectUrl", ADMIN_BOOKS_LIST_URL);
 			}

@@ -15,7 +15,7 @@
 		<br />
 		<input name="price" type="text" value="${book.price}" placeholder="Prix" class="form-control form-control-sm" form="book-form" required />
 		<br />
-		Disponible en stock ? <input name="available" type="checkbox" value="${book.available}" checked="checked" form="book-form" />
+		<label style="cursor:pointer">Disponible en stock ? <input name="available" type="checkbox" value="${book.available}" checked="checked" form="book-form" /></label>
 	</div>
 	
 	<div class="form-group col-md-4 offset-1">

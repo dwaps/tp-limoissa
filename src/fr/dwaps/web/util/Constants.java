@@ -1,6 +1,9 @@
 package fr.dwaps.web.util;
 
 public final class Constants {
+	// Encoding
+	public static final String APP_ENCODING = "UTF-8";
+	
 	// Servlets names
 	public static final String FRONT_SERVLET_NAME = "FrontServlet";
 	public static final String BACK_SERVLET_NAME = "BackServlet";
@@ -21,7 +24,6 @@ public final class Constants {
 	// Backend action names
 	public static final String ACTION_ADMIN_LIST_BOOKS = "list";
 	public static final String ACTION_ADMIN_CREATE_BOOK = "create";
-	public static final String ACTION_ADMIN_GET_BOOK = "get";
 	public static final String ACTION_ADMIN_EDIT_BOOK = "edit";
 	public static final String ACTION_ADMIN_DELETE_BOOK = "delete";
 	
@@ -39,7 +41,6 @@ public final class Constants {
 	public static final String ADMIN_BOOKS_BASEURL = "/admin/books/";
 	public static final String ADMIN_BOOKS_LIST_URL = ADMIN_BOOKS_BASEURL+ACTION_ADMIN_LIST_BOOKS;
 	public static final String ADMIN_BOOKS_CREATE_URL = ADMIN_BOOKS_BASEURL+ACTION_ADMIN_CREATE_BOOK;
-	public static final String ADMIN_BOOKS_GET_URL = ADMIN_BOOKS_BASEURL+ACTION_ADMIN_GET_BOOK;
 	public static final String ADMIN_BOOKS_EDIT_URL = ADMIN_BOOKS_BASEURL+ACTION_ADMIN_EDIT_BOOK;
 	public static final String ADMIN_BOOKS_DELETE_URL = ADMIN_BOOKS_BASEURL+ACTION_ADMIN_DELETE_BOOK;
 	

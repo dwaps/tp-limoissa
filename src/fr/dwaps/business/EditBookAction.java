@@ -1,11 +1,25 @@
 package fr.dwaps.business;
 
+import static fr.dwaps.web.util.Constants.ADMIN_BOOKS_EDIT_URL;
+import static fr.dwaps.web.util.Constants.ADMIN_BOOKS_LIST_URL;
+import static fr.dwaps.web.util.Constants.BOOK_AUTHOR;
+import static fr.dwaps.web.util.Constants.BOOK_AVAILABLE;
+import static fr.dwaps.web.util.Constants.BOOK_DESCRIPTION;
+import static fr.dwaps.web.util.Constants.BOOK_ID;
+import static fr.dwaps.web.util.Constants.BOOK_IMG;
+import static fr.dwaps.web.util.Constants.BOOK_PRICE;
+import static fr.dwaps.web.util.Constants.BOOK_TITLE;
+import static fr.dwaps.web.util.Constants.INFO_ATTR;
+import static fr.dwaps.web.util.Constants.INFO_BOOK_UPDATED_FAIL;
+import static fr.dwaps.web.util.Constants.INFO_BOOK_UPDATED_OK;
+import static fr.dwaps.web.util.Constants.JSP_BOOK_FORM_NAME;
+import static fr.dwaps.web.util.Constants.TITLE_BOOK_EDIT_PAGE;
+
 import javax.servlet.http.HttpServletRequest;
 
 import fr.dwaps.model.beans.Book;
-import fr.dwaps.model.dao.DAOFactory;
+import fr.dwaps.service.BookService;
 import fr.dwaps.web.util.AbstractAction;
-import static fr.dwaps.web.util.Constants.*;
 
 public class EditBookAction extends AbstractAction {
 	private static final String JSP_PAGE = JSP_BOOK_FORM_NAME;
@@ -22,13 +36,12 @@ public class EditBookAction extends AbstractAction {
 		try {
 			try {
 				int id = Integer.parseInt(idStr);
-				book = DAOFactory.getBookDAO().find(id);
+				book = BookService.find(id);
 			} catch (Exception e) { request.setAttribute("reload", true); }
 			
 			if (!postMethod) {
 				request.setAttribute("book", book);
 			} else {
-				System.out.println("EditBook postMethod...");
 				String title = request.getParameter(BOOK_TITLE);
 				String description = request.getParameter(BOOK_DESCRIPTION);
 				String author = request.getParameter(BOOK_AUTHOR);
@@ -46,7 +59,7 @@ public class EditBookAction extends AbstractAction {
 				book.setImg(img);
 				book.setPrice(price);
 				book.setAvailable(available);
-				DAOFactory.getBookDAO().update(book);
+				BookService.update(book);
 				
 				request.getSession().setAttribute(INFO_ATTR, INFO_BOOK_UPDATED_OK);
 				request.setAttribute("redirectUrl", ADMIN_BOOKS_LIST_URL);

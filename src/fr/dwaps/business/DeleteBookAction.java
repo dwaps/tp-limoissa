@@ -2,7 +2,7 @@ package fr.dwaps.business;
 
 import javax.servlet.http.HttpServletRequest;
 
-import fr.dwaps.model.dao.DAOFactory;
+import fr.dwaps.service.BookService;
 import fr.dwaps.web.util.AbstractAction;
 import fr.dwaps.web.util.Constants;
 
@@ -17,7 +17,7 @@ public class DeleteBookAction extends AbstractAction {
 		if (idStr != null) {
 			try {
 				int id = Integer.parseInt(idStr);
-				DAOFactory.getBookDAO().delete(id);
+				BookService.delete(id);
 			}
 			catch (Exception e) { e.printStackTrace(); }
 		}

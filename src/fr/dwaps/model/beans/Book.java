@@ -10,8 +10,8 @@ import javax.persistence.Id;
 
 @Entity
 public class Book implements Serializable {
-	private final static long serialVersionUID = 1L;
-	
+	private static final long serialVersionUID = 2181534200944384859L;
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;

@@ -3,7 +3,6 @@ package fr.dwaps.web.servlets;
 import static fr.dwaps.web.util.Constants.ADMIN_BOOKS_CREATE_URL;
 import static fr.dwaps.web.util.Constants.ADMIN_BOOKS_DELETE_URL;
 import static fr.dwaps.web.util.Constants.ADMIN_BOOKS_EDIT_URL;
-import static fr.dwaps.web.util.Constants.ADMIN_BOOKS_GET_URL;
 import static fr.dwaps.web.util.Constants.ADMIN_BOOKS_LIST_URL;
 import static fr.dwaps.web.util.Constants.BACK_SERVLET_NAME;
 
@@ -15,7 +14,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import fr.dwaps.model.beans.User;
 import fr.dwaps.web.util.ActionManager;
 
 @WebServlet(
@@ -23,7 +21,6 @@ import fr.dwaps.web.util.ActionManager;
 	urlPatterns={
 		ADMIN_BOOKS_LIST_URL,
 		ADMIN_BOOKS_CREATE_URL,
-		ADMIN_BOOKS_GET_URL,
 		ADMIN_BOOKS_EDIT_URL,
 		ADMIN_BOOKS_DELETE_URL})
 public class BackServlet extends HttpServlet {
@@ -32,9 +29,9 @@ public class BackServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		User user = (User) request.getSession().getAttribute("user");
+//		User user = (User) request.getSession().getAttribute("user");
 		
-		if (user != null) {
+//		if (user != null) {
 			String jspName = ActionManager
 				.getAction(request)
 				.executeAction(request);
@@ -44,8 +41,8 @@ public class BackServlet extends HttpServlet {
 				.forward(request, response);
 			
 			request.getSession().removeAttribute("info");
-		}
-		else response.sendRedirect(request.getContextPath()+"/home");
+//		}
+//		else response.sendRedirect(request.getContextPath()+"/home");
 	}
 	
 	@Override

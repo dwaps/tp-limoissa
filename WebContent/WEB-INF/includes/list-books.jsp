@@ -11,9 +11,10 @@
 		<td>${ book.author }</td>
 		<td>${ book.price }</td>
 		<c:if test="${ backend }"><td>
-			<a class="text-info ml-2" href="${ adminBooksEditUrl }?id=${ book.id }">
+			<fmt:parseNumber value="${ book.id }" integerOnly="true" var="id" />
+			<a class="text-info ml-2" href="${ adminBooksEditUrl }?id=${id}">
 				<i class="mt-2 material-icons">mode_edit</i></a>
-			<a class="text-info" href="${ adminBooksDeleteUrl }?id=${ book.id }">
+			<a class="text-info" href="${ adminBooksDeleteUrl }?id=${id}">
 				<i class="mt-2 material-icons">delete</i></a>
 		</td></c:if>
 	</tr>
